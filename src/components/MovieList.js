@@ -6,9 +6,8 @@ import { useSelector } from "react-redux";
 import { store } from "../store/store";
 
 const MovieList = (props) => {
-  const movies = [];
   const filmListe = useSelector((store) => store.liste);
-  console.log("Film listesi:", filmListe);
+  console.log("Bu obje MovieList.js ten geliyor:", filmListe);
   return (
     <div className="flex-1">
       <div className="overflow-hidden bg-white rounded-md shadow mb-4 sm:min-h-[400px]">
@@ -25,14 +24,14 @@ const MovieList = (props) => {
           </thead>
 
           <tbody className="text-sm">
-            {movies.map((movie) => (
+            {filmListe.movies.map((movie) => (
               <MovieListItem key={movie.id} movie={movie} />
             ))}
           </tbody>
         </table>
       </div>
 
-      <MovieListFooter totalMovies={movies.length} />
+      <MovieListFooter totalMovies={filmListe.movies.length} />
     </div>
   );
 };
